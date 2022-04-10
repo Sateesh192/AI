@@ -1,0 +1,58 @@
+
+count=0
+theboard={
+        '1':' ','2':' ','3':' ',
+        '4':' ','5':' ','6':' ',
+        '7':' ','8':' ','9':' ',
+    }
+
+board_keys=[]
+for i in theboard:
+    board_keys.append(i)
+def print_board(board):
+        print(board['1']+'|'+board['2']+'|'+board['3'])
+        print('-+-+-')
+        print(board['4']+'|'+board['5']+'|'+board['6'])
+        print('-+-+-')
+        print(board['7']+'|'+board['8']+'|'+board['9'])
+
+
+
+def game():
+    turn='X'
+    coun=0
+    for i in range(10):
+       print_board(theboard)
+       print("It's your turn "+turn+".\nWhich place you want to place")
+       move=input()
+       if theboard[move]!=' ':
+         print('invalid position theboard')
+        
+       else:
+         theboard[move]=turn
+         coun+=1
+       if coun>4:
+                if theboard['1']==theboard['2']==theboard['3']!=' ' :return turn
+                elif theboard['4']==theboard['5']==theboard['6']!=' ':return turn
+                elif theboard['7']==theboard['8']==theboard['9']!=' ':return turn
+                elif theboard['1']==theboard['4']==theboard['7']!=' ':return turn 
+                elif theboard['2']==theboard['5']==theboard['8']!=' ':return turn
+                elif theboard['3']==theboard['6']==theboard['9']!=' ':return turn
+                elif theboard['1']==theboard['5']==theboard['9']!=' ':return turn
+                elif theboard['3']==theboard['5']==theboard['7']!=' ' :return turn
+
+                
+
+                   
+       if coun==9:
+                print('\n The Game over\n')
+                print("The game is a tie")
+                
+       if turn=='X':
+                turn='0'
+       else:
+                turn='X'
+                
+ans=game()
+print("game won by"+ans)            
+        
